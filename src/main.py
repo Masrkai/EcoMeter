@@ -6,7 +6,7 @@ import geopandas as gpd
 import contextily as ctx
 import matplotlib.pyplot as plt
 
-from pyrosm import OSM
+# from pyrosm import OSM
 
 warnings.filterwarnings("ignore", message=".*value is being set on a copy.*")
 
@@ -21,13 +21,13 @@ if len(buildings) == 0:
     raise ValueError("No buildings found in this bbox. Widen the coordinates.")
 
 # Roads still from OSM (Overture roads are overkill here, OSM roads are fine)
-osm = OSM("egypt-latest.osm.pbf", bounding_box=bbox)
-roads = osm.get_network(network_type="driving")
-print(f"Loaded {len(roads)} road segments from OSM")
+# osm = OSM("egypt-latest.osm.pbf", bounding_box=bbox)
+# roads = osm.get_network(network_type="driving")
+# print(f"Loaded {len(roads)} road segments from OSM")
 
 # 3. Reproject to UTM zone 36N for accurate area calculation
 buildings_proj = buildings.to_crs(epsg=32636).copy()
-roads_proj = roads.to_crs(epsg=32636)
+# roads_proj = roads.to_crs(epsg=32636)
 buildings_proj["area_m2"] = buildings_proj.geometry.area
 
 # 4. Proxy emission model — all tabular work in Polars
@@ -110,7 +110,7 @@ buildings_proj = gpd.GeoDataFrame(
 
 # Reproject to WGS84 for basemap alignment
 buildings = buildings_proj.to_crs(epsg=4326)
-roads = roads_proj.to_crs(epsg=4326)
+# roads = roads_proj.to_crs(epsg=4326)
 
 # 5. Visualize
 fig, ax = plt.subplots(1, 1, figsize=(12, 10))
@@ -125,7 +125,7 @@ buildings.plot(
     alpha=0.8,
     legend_kwds={"fmt": "{:.0f}", "title": "CO₂ proxy (kg/yr)"},
 )
-roads.plot(ax=ax, color="gray", linewidth=0.3, alpha=0.5)
+# roads.plot(ax=ax, color="gray", linewidth=0.3, alpha=0.5)
 ax.set_title("Proxy CO₂ Emissions Estimate - Galala University", fontsize=14)
 ax.axis("off")
 
