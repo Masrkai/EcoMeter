@@ -1,0 +1,11 @@
+osmnx
+pyrosm
+polars
+pyarrow
+geopandas
+matplotlib
+contextily
+mapclassify
+
+overturemaps
+pip-system-certs
