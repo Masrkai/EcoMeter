@@ -156,7 +156,7 @@ Global production:
 
 # 🗑️ 5. WASTE (≈ 3–4%)
 
-## Landfills:
+## Landfills
 
 * Organic waste → methane
 
@@ -164,7 +164,7 @@ Global production:
 
 * 1 ton waste → **~50–100 kg CH₄ over time**
 
-## Wastewater:
+## Wastewater
 
 * Releases CH₄ + N₂O
 
@@ -196,7 +196,7 @@ E_{total} = \sum (Activity \times Emission\ Factor)
 
 ## CH₄ (~16%)
 
-## Radiative effect:
+## Radiative effect
 
 [
 CH_4 \approx 28 \times CO_2
@@ -252,7 +252,7 @@ N_2O \approx 265 \times CO_2
 
 Use these as parameters:
 
-### Inputs:
+### Inputs
 
 * Energy consumption (kWh)
 * Fuel usage (liters, tons)
@@ -263,7 +263,7 @@ Use these as parameters:
 
 ---
 
-### Core Computation:
+### Core Computation
 
 [
 E = \sum (Consumption_i \times EF_i)
@@ -367,7 +367,7 @@ Health = f(CO_2, PM2.5, Green\ Coverage, Temperature)
 
 ---
 
-### Example thresholds:
+### Example thresholds
 
 * 🌿 Green area > 30% → good
 * CO₂ low → good
