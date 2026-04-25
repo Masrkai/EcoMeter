@@ -1,0 +1,1 @@
+https://geohack.toolforge.org/geohack.php?pagename=Al_Galala&params=29.4300567_N_32.3973211_E_type:city_region:EG-SUZ
