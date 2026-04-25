@@ -74,15 +74,15 @@ else:
     buildings_df = buildings_df.with_columns(pl.lit("residential").alias("btype"))
 
 # Overture "height" column can proxy for levels (assume ~3m per floor)
-if "height" in buildings_df.columns:
+if "num_floors" in buildings_df.columns:
+    buildings_df = buildings_df.with_columns(
+        pl.col("num_floors").cast(pl.Float64, strict=False).fill_null(1).clip(1).alias("levels")
+    )
+elif "height" in buildings_df.columns:
     buildings_df = buildings_df.with_columns(
         (pl.col("height").cast(pl.Float64, strict=False).fill_null(3.0) / 3.0)
         .clip(1)
         .alias("levels")
-    )
-elif "num_floors" in buildings_df.columns:
-    buildings_df = buildings_df.with_columns(
-        pl.col("num_floors").cast(pl.Float64, strict=False).fill_null(1).clip(1).alias("levels")
     )
 else:
     buildings_df = buildings_df.with_columns(pl.lit(1.0).alias("levels"))
@@ -120,7 +120,7 @@ buildings.plot(
     ax=ax,
     legend=True,
     cmap="OrRd",
-    scheme="quantiles",
+    scheme="naturalbreaks",   # <-- was "quantiles"
     k=5,
     alpha=0.8,
     legend_kwds={"fmt": "{:.0f}", "title": "CO₂ proxy (kg/yr)"},
