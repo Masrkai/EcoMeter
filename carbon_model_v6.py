@@ -962,7 +962,7 @@ if __name__ == "__main__":
         compute_building_emission_score("house", -100)
         print("  FAIL: negative area accepted")
     except ValueError as e:
-        print(f"  PASS: negative area blocked → {e}")
+        print(f"  PASS: negative area blocked → {e}") 
     try:
         sustainability_grade(0.5, 1.5)
         print("  FAIL: ndvi > 1.0 accepted")
