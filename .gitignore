@@ -2,4 +2,4 @@
 *.osm.pbf
 galala*
 result.svg
-
+basemap_cache.tiff
