@@ -1,10 +1,14 @@
+import os
 import math
 # import subprocess
 import warnings
+import rasterio #new
+import numpy as np
 import polars as pl
 import geopandas as gpd
 import contextily as ctx
 import matplotlib.pyplot as plt
+from rasterio.transform import from_bounds #new
 
 # from pyrosm import OSM
 
@@ -142,6 +146,70 @@ plt.savefig(output_map, format="svg", bbox_inches="tight")
 
 print(f"Map saved: {output_map}")
 plt.close(fig)
+
+# ── Basemap caching ──────────────────────────────────────────────────────────── #new
+BASEMAP_CACHE = "basemap_cache.tiff"
+
+fig, ax = plt.subplots(1, 1, figsize=(12, 10))
+
+buildings.plot(
+    column="co2_proxy_kg_yr",
+    ax=ax,
+    legend=True,
+    cmap="OrRd",
+    scheme="quantiles",
+    k=5,
+    alpha=0.8,
+    legend_kwds={"fmt": "{:.0f}", "title": "CO₂ proxy (kg/yr)"},
+)
+
+if os.path.exists(BASEMAP_CACHE):
+    # ── Cache HIT: load tile image from disk and place it on the axes ────────── 
+    with rasterio.open(BASEMAP_CACHE) as src:
+        img = src.read()                    # shape: (bands, H, W)
+        bounds = src.bounds                 # west, south, east, north
+    img_rgb = np.transpose(img[:3], (1, 2, 0))  # → (H, W, 3)
+    ax.imshow(
+        img_rgb,
+        extent=[bounds.left, bounds.right, bounds.bottom, bounds.top],
+        origin="upper",
+        aspect="auto",
+        zorder=0,
+    )
+    print("Basemap loaded from cache.")
+else:
+    # ── Cache MISS: fetch tiles, render onto axes, then save to disk ───────────
+    west, south, east, north = buildings.total_bounds   # minx, miny, maxx, maxy
+
+    img, ext = ctx.bounds2img(
+        west, south, east, north,
+        zoom="auto",
+        source=ctx.providers.Esri.WorldImagery,
+        ll=True,          # coordinates are lon/lat
+    )
+    # ext = (left, right, bottom, top)
+    ax.imshow(img, extent=ext, origin="upper", aspect="auto", zorder=0)
+
+    # Save the tile array as a GeoTIFF so it can be reloaded later
+    left, right, bottom, top = ext
+    transform = from_bounds(left, bottom, right, top, img.shape[1], img.shape[0])
+    bands = np.transpose(img[:, :, :3], (2, 0, 1))  # (3, H, W)
+
+    with rasterio.open(
+        BASEMAP_CACHE,
+        "w",
+        driver="GTiff",
+        height=bands.shape[1],
+        width=bands.shape[2],
+        count=3,
+        dtype=bands.dtype,
+        crs="EPSG:4326",
+        transform=transform,
+    ) as dst:
+        dst.write(bands)
+
+    print(f"Basemap fetched and cached → {BASEMAP_CACHE}")
+#--------------------------------------------------------------------------------
 
 # 6. Export vector data
 export_cols = [c for c in ["btype", "area_m2", "levels", "co2_proxy_kg_yr", "geometry"] if c in buildings.columns]
