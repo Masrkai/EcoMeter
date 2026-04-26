@@ -24,11 +24,6 @@ print(f"Loaded {len(buildings)} buildings from Overture")
 if len(buildings) == 0:
     raise ValueError("No buildings found in this bbox. Widen the coordinates.")
 
-# Roads still from OSM (Overture roads are overkill here, OSM roads are fine)
-# osm = OSM("egypt-latest.osm.pbf", bounding_box=bbox)
-# roads = osm.get_network(network_type="driving")
-# print(f"Loaded {len(roads)} road segments from OSM")
-
 # 3. Reproject to UTM zone 36N for accurate area calculation
 buildings_proj = buildings.to_crs(epsg=32636).copy()
 # roads_proj = roads.to_crs(epsg=32636)
@@ -137,9 +132,6 @@ ctx.add_basemap(ax, crs=buildings.crs, source=ctx.providers.Esri.WorldImagery)
 # ax.texts.clear()  # remove ESRI attribution text
 
 plt.tight_layout()
-
-# output_map = "galala_co2_proxy.png"
-# plt.savefig(output_map, format="png", bbox_inches="tight")
 
 output_map = "result.svg"
 plt.savefig(output_map, format="svg", bbox_inches="tight")

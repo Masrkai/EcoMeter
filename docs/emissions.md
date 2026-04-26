@@ -1,7 +1,5 @@
 
----
-
-#  1. Global Emissions Baseline (Anchor Numbers)
+# 1. Global Emissions Baseline (Anchor Numbers)
 
 * Total GHG emissions ≈ **50–55 GtCO₂e/year**
 * CO₂ from energy alone ≈ **~37–40 Gt CO₂/year**
@@ -10,11 +8,11 @@
 
 ---
 
-#  2. ENERGY (≈ 73%) — Detailed Consumption Breakdown
+# 2. ENERGY (≈ 73%) — Detailed Consumption Breakdown
 
 This is driven by **fuel consumption**.
 
-##  Global Energy Consumption by Fuel
+## Global Energy Consumption by Fuel
 
 Approximate shares:
 
@@ -25,9 +23,9 @@ Approximate shares:
 
 ---
 
-##  Emissions by Energy Sub-sector
+## Emissions by Energy Sub-sector
 
-###  Electricity & Heat (~30% of total emissions)
+### Electricity & Heat (~30% of total emissions)
 
 Consumption:
 
@@ -46,7 +44,7 @@ E_{electricity} = \sum (Energy_i \times EF_i)
 
 ---
 
-###  Transport (~16%)
+### Transport (~16%)
 
 Consumption:
 
@@ -68,7 +66,7 @@ E_{transport} = Fuel_{used} \times EF
 
 ---
 
-###  Buildings (~17%)
+### Buildings (~17%)
 
 Consumption:
 
@@ -82,7 +80,7 @@ Breakdown:
 
 ---
 
-###  Industry Energy (~10–12%)
+### Industry Energy (~10–12%)
 
 Consumption:
 
@@ -92,9 +90,9 @@ Consumption:
 
 ---
 
-#  3. AGRICULTURE & LAND USE (≈ 18%)
+# 3. AGRICULTURE & LAND USE (≈ 18%)
 
-##  Livestock (≈ 5–6%)
+## Livestock (≈ 5–6%)
 
 * ~1.5 billion cattle globally
 * Each cow → **~70–120 kg CH₄/year**
@@ -106,7 +104,7 @@ CH_4 \times 28
 
 ---
 
-##  Deforestation (≈ 8–10%)
+## Deforestation (≈ 8–10%)
 
 * ~10 million hectares lost/year
 
@@ -116,7 +114,7 @@ CH_4 \times 28
 
 ---
 
-##  Fertilizers (≈ 3–4%)
+## Fertilizers (≈ 3–4%)
 
 * Nitrogen fertilizers → release **N₂O**
 
@@ -127,13 +125,13 @@ N_2O \times 265
 
 ---
 
-##  Rice Cultivation (~1–2%)
+## Rice Cultivation (~1–2%)
 
 * Flooded fields → methane production
 
 ---
 
-#  4. INDUSTRIAL PROCESSES (≈ 5%)
+# 4. INDUSTRIAL PROCESSES (≈ 5%)
 
 ## Cement (≈ 3%)
 
@@ -147,14 +145,14 @@ Global production:
 
 ---
 
-##  Steel & Chemicals (~2%)
+## Steel & Chemicals (~2%)
 
 * Steel → coal-based blast furnaces
 * Chemicals → gas feedstock
 
 ---
 
-#  5. WASTE (≈ 3–4%)
+# 5. WASTE (≈ 3–4%)
 
 ## Landfills
 
@@ -170,7 +168,7 @@ Global production:
 
 ---
 
-#  6. WHY THESE PERCENTAGES (Mathematical Explanation)
+# 6. WHY THESE PERCENTAGES (Mathematical Explanation)
 
 The percentages come from:
 
@@ -187,7 +185,7 @@ E_{total} = \sum (Activity \times Emission\ Factor)
 
 ---
 
-#  7. Gas Contribution (WITH REAL WEIGHTING)
+# 7. Gas Contribution (WITH REAL WEIGHTING)
 
 ## CO₂ (~75%)
 
@@ -212,22 +210,22 @@ N_2O \approx 265 \times CO_2
 
 ---
 
-#  8. OXYGEN / ABSORPTION (Quantified Properly)
+# 8. OXYGEN / ABSORPTION (Quantified Properly)
 
-##  Photosynthesis
+## Photosynthesis
 
 6CO_2 + 6H_2O \rightarrow C_6H_{12}O_6 + 6O_2
 
 ---
 
-##  Tree Absorption Numbers
+## Tree Absorption Numbers
 
 * 1 tree → **20–25 kg CO₂/year**
 * 1 hectare forest → **~10–20 tons CO₂/year**
 
 ---
 
-##  Global Capacity
+## Global Capacity
 
 * Total natural absorption ≈ **~20–25 Gt CO₂/year**
 * Human emissions ≈ **~40 Gt CO₂/year**
@@ -239,7 +237,7 @@ N_2O \approx 265 \times CO_2
 
 ---
 
-#  KEY INSIGHT (Critical for Your Model)
+# KEY INSIGHT (Critical for Your Model)
 
  The percentages are NOT random—they come from:
 
@@ -248,7 +246,7 @@ N_2O \approx 265 \times CO_2
 
 ---
 
-#  9. How to Plug This into EcoBalance (Exact Inputs)
+# 9. How to Plug This into EcoBalance (Exact Inputs)
 
 Use these as parameters:
 
@@ -281,7 +279,7 @@ S = Area \times Absorption\ Rate
 
 ---
 
-#  1. Normal Oxygen Levels (What “Healthy” Means)
+# 1. Normal Oxygen Levels (What “Healthy” Means)
 
 In Earth’s atmosphere:
 
@@ -291,7 +289,7 @@ In Earth’s atmosphere:
 
 ---
 
-##  Safe / Healthy Oxygen Range
+## Safe / Healthy Oxygen Range
 
 * **19.5% – 23.5% O₂** → considered safe for humans
 * Below **19.5%** → oxygen deficiency (dangerous)
@@ -304,7 +302,7 @@ In Earth’s atmosphere:
 
 ---
 
-#  2. Why Oxygen is NOT the Problem
+# 2. Why Oxygen is NOT the Problem
 
 Even in polluted cities:
 
@@ -318,11 +316,11 @@ Even in polluted cities:
 
 ---
 
-#  3. What Actually Defines a “Healthy Environment”
+# 3. What Actually Defines a “Healthy Environment”
 
 Instead of oxygen %, you should track:
 
-###  Key Environmental Indicators
+### Key Environmental Indicators
 
 1. **CO₂ concentration**
 
@@ -344,7 +342,7 @@ Instead of oxygen %, you should track:
 
 ---
 
-#  4. Role of Oxygen (Scientifically)
+# 4. Role of Oxygen (Scientifically)
 
 Photosynthesis produces oxygen:
 
@@ -357,7 +355,7 @@ Photosynthesis produces oxygen:
 
 ---
 
-#  5. If You Want to Model “Healthy Places” (Better Approach)
+# 5. If You Want to Model “Healthy Places” (Better Approach)
 
 Instead of oxygen %, define a **Health Score** like this:
 
@@ -369,13 +367,13 @@ Health = f(CO_2, PM2.5, Green\ Coverage, Temperature)
 
 ### Example thresholds
 
-*  Green area > 30% → good
+* Green area > 30% → good
 * CO₂ low → good
 * PM2.5 low → good
 
 ---
 
-#  Final Key Insight
+# Final Key Insight
 
  There is **NO specific percentage of oxygen needed per place** beyond ~21%
  You cannot “fix” climate change by increasing oxygen
@@ -387,7 +385,7 @@ The real issue is:
 
 ---
 
-#  For Your EcoBalance Project
+# For Your EcoBalance Project
 
 Instead of:
 “Oxygen percentage”
